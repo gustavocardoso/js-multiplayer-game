@@ -12,7 +12,7 @@ body {
 }
 
 #board {
-  border: 10px solid #222;
+  border: 5px solid #666;
   width: 600px;
   height: 600px;
   image-rendering: pixelated;
