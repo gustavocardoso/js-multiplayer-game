@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#board {
+  border: 10px solid #222;
+  width: 600px;
+  height: 600px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
