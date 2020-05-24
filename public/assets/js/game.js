@@ -3,15 +3,15 @@ export default function createGame() {
     players: {},
     fruits: {},
     screen: {
-      width: 25,
-      height: 25
+      width: 15,
+      height: 15
     }
   }
 
   const observers = []
 
   function start() {
-    const frequency = 3000
+    const frequency = 5000
 
     setInterval(addFruit, frequency)
   }
@@ -36,17 +36,20 @@ export default function createGame() {
     const playerId = command.playerId
     const playerX = 'playerX' in command ? command.playerX : Math.floor(Math.random() * state.screen.width)
     const playerY = 'playerY' in command ? command.playerY : Math.floor(Math.random() * state.screen.height)
+    const score = 0
 
     state.players[playerId] = {
       x: playerX,
-      y: playerY
+      y: playerY,
+      score: 0
     }
 
     notifyAll({
       type: 'add-player',
       playerId: playerId,
       playerX: playerX,
-      playerY: playerY
+      playerY: playerY,
+      score
     })
   }
 
@@ -62,7 +65,6 @@ export default function createGame() {
   }
 
   function addFruit(command) {
-    console.log('fruit will be added')
     const fruitId = command ? command.fruitId : Math.floor(Math.random() * 10000000)
     const fruitX = command ? command.fruitX : Math.floor(Math.random() * state.screen.width)
     const fruitY = command ? command.fruitY : Math.floor(Math.random() * state.screen.height)
@@ -157,11 +159,12 @@ export default function createGame() {
 
     for (const fruitId in state.fruits) {
       const fruit = state.fruits[fruitId]
-      console.log(`Checking ${playerId} and ${fruitId}`)
+      // console.log(`Checking ${playerId} and ${fruitId}`)
 
       if (player.x === fruit.x && player.y === fruit.y) {
-        console.log(`COLLISION between ${playerId} and ${fruitId}`)
+        // console.log(`COLLISION between ${playerId} and ${fruitId}`)
         removeFruit({ fruitId })
+        player.score = player.score + 1
       }
     }
   }

@@ -1,4 +1,4 @@
-export default function renderScreen(screen, game, requestAnimationFrame, currentPlayerId) {
+export default function renderScreen(screen, scoreContainer, game, requestAnimationFrame, currentPlayerId) {
   const ctx = screen.getContext('2d')
 
   screen.setAttribute('width', game.state.screen.width)
@@ -23,9 +23,10 @@ export default function renderScreen(screen, game, requestAnimationFrame, curren
   if (currentPlayer) {
     ctx.fillStyle = '#f0db4f'
     ctx.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+    scoreContainer.innerHTML = currentPlayer.score
   }
 
   requestAnimationFrame(() => {
-    renderScreen(screen, game, requestAnimationFrame, currentPlayerId)
+    renderScreen(screen, scoreContainer, game, requestAnimationFrame, currentPlayerId)
   })
 }

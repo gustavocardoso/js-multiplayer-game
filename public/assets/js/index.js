@@ -4,6 +4,7 @@ import renderScreen from './render-screen.js'
 
 const socket = io()
 const screen = document.querySelector('#board')
+const scoreContainer = document.querySelector('.score')
 
 const game = createGame()
 
@@ -15,7 +16,7 @@ socket.on('connect', () => {
 
   console.log(game.state)
 
-  renderScreen(screen, game, requestAnimationFrame, playerId)
+  renderScreen(screen, scoreContainer, game, requestAnimationFrame, playerId)
 })
 
 socket.on('disconnect', () => {

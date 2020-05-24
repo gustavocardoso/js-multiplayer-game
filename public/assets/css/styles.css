@@ -9,6 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font: normal normal 100%/1.5 sans-serif;
 }
 
 #board {
@@ -17,4 +18,9 @@ body {
   height: 600px;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+}
+
+.score-container {
+  font-size: 1.4rem;
+  font-weight: 700;
 }
