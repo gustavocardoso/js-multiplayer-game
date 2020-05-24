@@ -1,6 +1,9 @@
 export default function renderScreen(screen, game, requestAnimationFrame, currentPlayerId) {
   const ctx = screen.getContext('2d')
 
+  screen.setAttribute('width', game.state.screen.width)
+  screen.setAttribute('height', game.state.screen.height)
+
   ctx.clearRect(0, 0, board.width, board.height)
 
   for (const fruitId in game.state.fruits) {

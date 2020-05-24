@@ -13,6 +13,8 @@ socket.on('connect', () => {
   const playerId = socket.id
   console.log(`Player connected on client with ID: ${playerId}`)
 
+  console.log(game.state)
+
   renderScreen(screen, game, requestAnimationFrame, playerId)
 })
 
